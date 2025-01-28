@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        
-            let doIt = () => {
-                const x = document.getElementById('bw').value
-                x > 15 ? alert('Overweight') : null
+
+        let doIt = () => {
+            const x = document.getElementById('bw').value
+            x > 15 ? alert('Overweight') : null
+        }
+
+        let clickMe = () => {
+            // const x = document.getElementById('multipleOf3and5').value
+
+            let sum = 0;
+
+
+            for (let i = 3; i <= 1000; i += 3) {
+                sum += i;
             }
 
-            let clickMe = () => {
-                alert('working')
-            }
-        
+
+            alert("The sum of multiples of 3 up to 1000 is: " + sum);
+        }
+
     </script>
 </head>
 
@@ -23,8 +33,12 @@
     <div>
         <input type="text" id="bw" , width="6"><button onclick="doIt()">Submit</button>
     </div>
+    </br>
+    <h1>Exercise 2</h1>
+
     <div>
         <button onclick="clickMe()">Click me</button>
+        <!-- <h2 id="multipleOf3and5"></h2> -->
     </div>
 </body>
 
