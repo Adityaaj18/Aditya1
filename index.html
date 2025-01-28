@@ -39,17 +39,21 @@
         }
         let clickMeMultiple = () => {
   
-            const x = Number(document.getElementById('a').value)
-
-            // let sum = 0;
-
-
-            // for (let i = 5; i <= 1000; i += 5) {
-            //     sum += i;
-            // }
+            const a = Number(document.getElementById('a').value)
+            const b = Number(document.getElementById('a').value)
+            const n = Number(document.getElementById('a').value)
 
 
-            alert(typeof x);
+
+            let sum = 0;
+
+
+            for (let i = a; i <= n; i += a) {
+                sum += i;
+            }
+
+
+            alert(sum);
         }
 
     </script>
@@ -76,10 +80,12 @@
     </div>
     </br>
     </br>
+    <h1>Exercise 3</h1>
+
     <div>
-        <div><span>A</span><input id="a" type="number" /></div>
-        <div><span>B</span><input id="n" type="number" /></div>
-        <div><span>N</span><input id="n" type="number" /></div>
+        <div><label>A</label><input id="a" type="number" /></div>
+        <div><label>B</label><input id="n" type="number" /></div>
+        <div><label>N</label><input id="n" type="number" /></div>
         <button onclick="clickMeMultiple()">Click me</button>
     </div>
 
