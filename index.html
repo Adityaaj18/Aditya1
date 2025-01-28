@@ -39,6 +39,7 @@
         }
         let clickMeMultiple = () => {
   
+            const x = document.getElementById('a').value
 
             // let sum = 0;
 
@@ -48,7 +49,7 @@
             // }
 
 
-            alert("exercise3");
+            alert(typeof x);
         }
 
     </script>
@@ -76,10 +77,10 @@
     </br>
     </br>
     <div>
-        <div><span>A</span><input /></div>
-        <div><span>A</span><input /></div>
-        <div><span>A</span><input /></div>
-        <button onclick="clickMeMuliple">Click me</button>
+        <div><span>A</span><input id="a" type="number" /></div>
+        <div><span>B</span><input id="n" type="number" /></div>
+        <div><span>N</span><input id="n" type="number" /></div>
+        <button onclick="clickMeMultiple()">Click me</button>
     </div>
 
 
