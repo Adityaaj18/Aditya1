@@ -11,7 +11,7 @@
             x > 15 ? alert('Overweight') : null
         }
 
-        let clickMe = () => {
+        let clickMe3 = () => {
             // const x = document.getElementById('multipleOf3and5').value
 
             let sum = 0;
@@ -23,6 +23,19 @@
 
 
             alert("The sum of multiples of 3 up to 1000 is: " + sum);
+        }
+        let clickMe5 = () => {
+            // const x = document.getElementById('multipleOf3and5').value
+
+            let sum = 0;
+
+
+            for (let i = 5; i <= 1000; i += 5) {
+                sum += i;
+            }
+
+
+            alert("The sum of multiples of 5 up to 1000 is: " + sum);
         }
 
     </script>
@@ -37,8 +50,16 @@
     <h1>Exercise 2</h1>
 
     <div>
-        <button onclick="clickMe()">Click me</button>
-        <!-- <h2 id="multipleOf3and5"></h2> -->
+        <div>
+            <h3>Multiple of 3</h3><button onclick="clickMe3()">Click me</button>
+        </div>
+        </br>
+        <div>
+            <h3>Multiple of 5</h3><button onclick="clickMe5()">Click me</button>
+        </div>
+    </div>
+
+
     </div>
 </body>
 
