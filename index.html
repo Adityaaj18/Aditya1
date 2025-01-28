@@ -8,7 +8,11 @@
         
             let doIt = () => {
                 const x = document.getElementById('bw').value
-                x > 15 ? alert('Overweight') : alert('looks fine')
+                x > 15 ? alert('Overweight') : null
+            }
+
+            let clickMe = () => {
+                alert('working')
             }
         
     </script>
@@ -18,6 +22,9 @@
     <h1>Exercise 1</h1>
     <div>
         <input type="text" id="bw" , width="6"><button onclick="doIt()">Submit</button>
+    </div>
+    <div>
+        <button onclick="clickMe()">Click me</button>
     </div>
 </body>
 
