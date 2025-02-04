@@ -96,6 +96,13 @@
 
         }
 
+        const parseArrayInput = (input) => {
+            return input.split(',')
+                .map(num => parseInt(num.trim()))
+                .filter(num => !isNaN(num));
+        }
+
+
         function parseArrayInput(input) {
             return input.split(',')
                 .map(num => parseInt(num.trim()))
@@ -110,14 +117,15 @@
             }
 
             // Get all multiples of both factors and sum them
-            const seen = new Set();
+            let sum = 0;
             for (const num of l) {
+                // Only add each number once, even if it's a multiple of both factors
                 if (num % a[0] === 0 || num % a[1] === 0) {
-                    seen.add(num);
+                    sum += num;
                 }
             }
 
-            return Array.from(seen).reduce((sum, num) => sum + num, 0);
+            return sum;
         }
 
         function calculateSum2() {
@@ -137,6 +145,22 @@
             const result = f5(factorsArray, numbersArray);
             alert(`The sum of multiples is: ${result}`);
         }
+        const factorsInput = document.getElementById('factorsInput').value;
+        const numbersInput = document.getElementById('numbersInput').value;
+
+        const factorsArray = parseArrayInput(factorsInput);
+        const numbersArray = parseArrayInput(numbersInput);
+
+
+        if (factorsArray.length !== 2) {
+            alert('Please enter exactly 2 factors separated by comma');
+            return;
+        }
+
+
+        const result = f5(factorsArray, numbersArray);
+        alert(`The sum of multiples is: ${result}`);
+
 
     </script>
 </head>
@@ -201,12 +225,12 @@
                 <label for="factorsInput">a (enter 2 numbers separated by comma):</label>
                 <input type="text" id="factorsInput" placeholder="e.g., 2,3">
             </div>
-            
+
             <div class="input-group">
                 <label for="numbersInput">l (enter numbers separated by comma):</label>
                 <input type="text" id="numbersInput" placeholder="e.g., 2,3,4,5,6">
             </div>
-        
+
             <button onclick="calculateSum2()">Calculate Sum of Multiples</button>
         </div>
     </div>
