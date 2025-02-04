@@ -75,26 +75,26 @@
         }
 
         function calculateSum() {
-            // Get input values
+            
             const a = document.getElementById('numA').value;
             const b = document.getElementById('numB').value;
             const cString = document.getElementById('arrayC').value;
             
-            // Convert array string to actual array of numbers
+            
             const c = cString.split(',').map(num => parseInt(num.trim()));
             
-            // Validate inputs
+            
             if (!a || !b || !cString) {
                 alert('Please fill in all fields');
                 return;
             }
             
-            // Calculate result
-            const result = findSumOfMultiples(a, b, c);
             
-            // Display result
-            document.getElementById('result').innerHTML = 
-                `Sum of multiples of ${a} or ${b} in the array is: ${result}`;
+            const result = findSumOfMultiples(a, b, c);
+
+            alert(`Sum of multiples of ${a} or ${b} in the array is: ${result}`)
+            
+            
         }
 
     </script>
