@@ -176,22 +176,25 @@
 
         //exercise 7
 
-        const basket = {
-            "apple": 10,
-            "mango": 5
-        }
-        const prices = {
-            "apple": 2,
-            "mango": 3
-        }
+
         const f7 = () => {
-            calculateBasketTotal(prices, basket)
+            const basket = {
+                "apple": 10,
+                "mango": 5
+            }
+            const prices = {
+                "apple": 2,
+                "mango": 3
+            }
+            let total = calculateBasketTotal(prices, basket)
+            alert(total)
+
         }
 
         const calculateBasketTotal = (price, quantity) => {
-            alert(`The total value of your cart is: ${price.apple * quantity.apple}`)
-            // let totalPrice = price.apple * quantity.apple
-            // return totalPrice 
+
+            let totalPrice = price.apple * quantity.apple
+            return totalPrice
         }
 
 
