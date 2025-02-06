@@ -38,7 +38,7 @@
 
             alert("The sum of multiples of 5 up to 1000 is: " + sum);
         }
-        
+
         //exercise 3
         let clickMeMultiple = () => {
 
@@ -101,24 +101,24 @@
         }
 
         //exercise 5
-        
+
         const parseArrayInput = (input) => {
             return input.split(',')
                 .map(num => parseInt(num.trim()))
                 .filter(num => !isNaN(num));
         }
 
-        
+
         const f5 = (a, l) => {
-            
+
             if (!Array.isArray(a) || !Array.isArray(l) || a.length !== 2) {
                 return 0;
             }
 
-            
+
             let sum = 0;
             for (const num of l) {
-                
+
                 if (num % a[0] === 0 || num % a[1] === 0) {
                     sum += num;
                 }
@@ -134,30 +134,30 @@
             const factorsArray = parseArrayInput(factorsInput);
             const numbersArray = parseArrayInput(numbersInput);
 
-            
+
             if (factorsArray.length !== 2) {
                 alert('Please enter exactly 2 factors separated by comma');
                 return;
             }
 
-            
+
             const result = f5(factorsArray, numbersArray);
             alert(`The sum of multiples is: ${result}`);
         }
-        
+
         //exercise 6
-        
+
         const f6 = (a, l) => {
-            
+
             const factors = a.split(',').map(num => parseInt(num.trim()));
             const numbers = l.split(',').map(num => parseInt(num.trim()));
-           
-            
-            const multiples = numbers.filter(num => 
+
+
+            const multiples = numbers.filter(num =>
                 factors.some(factor => factor !== 0 && num % factor === 0)
             );
-            
-            
+
+
             return multiples.reduce((sum, num) => sum + num, 0);
         }
 
@@ -173,30 +173,30 @@
             const result = f6(arrayA, arrayL);
             alert(`The sum of multiples is: ${result}`);
         }
-    
+
         //exercise 7
-       
+
         const basket = {
             "apple": 10,
-            "mango":5
+            "mango": 5
         }
         const prices = {
             "apple": 2,
             "mango": 3
         }
-        // const f7 = () => {
-        //     calculateBasketTotal(prices, basket)
-        // }
+        const calculateBasketTotal = (prices, quantities) => {
+            
+            let totalPrice = 0;
+            for (let item in prices) {
+                if (quantities[item]) {
+                    totalPrice += prices[item] * quantities[item];
+                }
+            }
+            return totalPrice;
+        };
 
         
-
-        const calculateBasketTotal = (price, quantity) => {
-            // alert(`The total value of your cart is: ${price.apple * quantity.apple}`)
-            let totalPrice = price.apple * quantity.apple
-            return totalPrice 
-        }
-
-        alert(calculateBasketTotal(), (prices, basket))
+        alert(`The total value of your cart is: ${calculateBasketTotal(prices, basket)}`);
 
 
     </script>
@@ -262,14 +262,14 @@
                 <label for="factorsInput">a (enter 2 numbers separated by comma):</label>
                 <input type="text" id="factorsInput" placeholder="e.g., 2,3">
             </div>
-            
+
             <div class="input-group">
                 <label for="numbersInput">l (enter numbers separated by comma):</label>
                 <input type="text" id="numbersInput" placeholder="e.g., 2,3,4,5,6">
             </div>
-        
+
             <button onclick="calculateSum2()">Calculate Sum of Multiples</button>
-           
+
         </div>
     </div>
     <div>
@@ -279,12 +279,12 @@
                 <label for="array-a">Array a (factors, comma-separated):</label>
                 <input type="text" id="array-a" placeholder="Enter factors (e.g., 2,3,5)">
             </div>
-        
+
             <div class="input-group">
                 <label for="array-l">Array l (numbers to check, comma-separated):</label>
                 <input type="text" id="array-l" placeholder="Enter numbers (e.g., 6,8,9,10,12)">
             </div>
-        
+
             <button onclick="calculateSum3()">Calculate Sum of Multiples</button>
         </div>
     </div>
