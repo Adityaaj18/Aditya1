@@ -102,14 +102,14 @@
 
         //exercise 5
         
-        function parseArrayInput(input) {
+        const parseArrayInput = (input) => {
             return input.split(',')
                 .map(num => parseInt(num.trim()))
                 .filter(num => !isNaN(num));
         }
 
         
-        function f5(a, l) {
+        const f5 = (a, l) => {
             
             if (!Array.isArray(a) || !Array.isArray(l) || a.length !== 2) {
                 return 0;
@@ -127,7 +127,7 @@
             return sum;
         }
 
-        function calculateSum2() {
+        const calculateSum2 = () => {
             const factorsInput = document.getElementById('factorsInput').value;
             const numbersInput = document.getElementById('numbersInput').value;
 
@@ -147,7 +147,7 @@
         
         //exercise 6
         
-        function f6(a, l) {
+        const f6 = (a, l) => {
             
             const factors = a.split(',').map(num => parseInt(num.trim()));
             const numbers = l.split(',').map(num => parseInt(num.trim()));
@@ -161,7 +161,7 @@
             return multiples.reduce((sum, num) => sum + num, 0);
         }
 
-        function calculateSum3() {
+        const calculateSum3 = () => {
             const arrayA = document.getElementById('array-a').value;
             const arrayL = document.getElementById('array-l').value;
 
@@ -177,12 +177,14 @@
         //exercise 7
        
         const basket = {
+            "quantity": 2
+        }
+        const prices = {
             "price": 20,
-            "quantity": 1
         }
 
         const calculateBasketTotal = (price, quantity) => {
-            alert(`The total value of your cart is: ${basket.price * basket.quantity}`)
+            alert(`The total value of your cart is: ${prices.price * basket.quantity}`)
         }
 
 
