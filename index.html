@@ -184,13 +184,19 @@
             "apple": 2,
             "mango": 3
         }
-        const f7 = () => {
-            calculateBasketTotal(prices, basket)
-        }
+        // const f7 = () => {
+        //     calculateBasketTotal(prices, basket)
+        // }
+
+        
 
         const calculateBasketTotal = (price, quantity) => {
-            alert(`The total value of your cart is: ${price.apple * quantity.apple}`)
+            // alert(`The total value of your cart is: ${price.apple * quantity.apple}`)
+            let totalPrice = price.apple * quantity.apple
+            return totalPrice 
         }
+
+        alert(calculateBasketTotal, (prices, basket))
 
 
     </script>
