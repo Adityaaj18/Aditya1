@@ -177,14 +177,19 @@
         //exercise 7
        
         const basket = {
-            "quantity": 2
+            "apple": 10,
+            "mango":5
         }
         const prices = {
-            "price": 20,
+            "apple": 2,
+            "mango": 3
+        }
+        const f7 = () => {
+            calculateBasketTotal(prices, basket)
         }
 
         const calculateBasketTotal = (price, quantity) => {
-            alert(`The total value of your cart is: ${prices.price * basket.quantity}`)
+            alert(`The total value of your cart is: ${prices.apple * basket.apple}`)
         }
 
 
@@ -280,7 +285,7 @@
     <div>
         <h1>Exercise 7</h1>
         <div>
-            <button onclick="calculateBasketTotal()">Add to cart</button>
+            <button onclick="f7()">Add to cart</button>
         </div>
     </div>
 
