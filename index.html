@@ -184,19 +184,16 @@
             "apple": 2,
             "mango": 3
         }
-        const calculateBasketTotal = (prices, quantities) => {
-            
-            let totalPrice = 0;
-            for (let item in prices) {
-                if (quantities[item]) {
-                    totalPrice += prices[item] * quantities[item];
-                }
-            }
-            return totalPrice;
-        };
+        const f7 = () => {
+            calculateBasketTotal(prices, basket)
+        }
 
-        
-        alert(`The total value of your cart is: ${calculateBasketTotal(prices, basket)}`);
+        const calculateBasketTotal = (price, quantity) => {
+            alert(`The total value of your cart is: ${price.apple * quantity.apple}`)
+            // let totalPrice = price.apple * quantity.apple
+            // return totalPrice 
+        }
+
 
 
     </script>
@@ -291,7 +288,7 @@
     <div>
         <h1>Exercise 7</h1>
         <div>
-            <button onclick="calculateBasketTotal()">Add to cart</button>
+            <button onclick="f7()">Add to cart</button>
         </div>
     </div>
 
