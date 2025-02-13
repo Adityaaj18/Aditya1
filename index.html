@@ -200,46 +200,53 @@
         //Exersice 8
         class Basket {
             constructor() {
-                this.items = new Map();
+                this.items = []; 
             }
 
             addItem(product, qty) {
-                const currentQty = this.items.get(product) || 0;
-                this.items.set(product, currentQty + qty);
+                
+                const existingItem = this.items.find(item => item.product === product);
+                
+                if (existingItem) {
+                    existingItem.qty += qty;
+                } else {
+                    this.items.push({ product, qty });
+                }
             }
 
             getCost(prices) {
                 let totalCost = 0;
-                for (const [product, qty] of this.items) {
-                    if (prices[product] === undefined) {
-                        throw new Error(`No price found for product: ${product}`);
+                
+                for (const item of this.items) {
+                    if (prices[item.product] === undefined) {
+                        throw new Error(`No price found for product: ${item.product}`);
                     }
-                    totalCost += prices[product] * qty;
+                    totalCost += prices[item.product] * item.qty;
                 }
+                
                 return totalCost;
             }
         }
 
-        // Create a basket and add some items
+        
         const basket = new Basket();
         basket.addItem("apple", 3);
         basket.addItem("banana", 2);
         basket.addItem("orange", 1);
 
-        // Define prices
+        
         const prices = {
-            apple: 0.5,    // $0.50 per apple
-            banana: 0.3,   // $0.30 per banana
-            orange: 0.6    // $0.60 per orange
+            apple: 0.5,    
+            banana: 0.3,   
+            orange: 0.6    
         };
 
-        // Function to show total when button is clicked
+        
         function showTotal() {
             const total = basket.getCost(prices);
-            const totalDisplay = document.getElementById('totalDisplay');
-            totalDisplay.textContent = `Total Price: $${total.toFixed(2)}`;
+            
+            alert(`Total Price: $${total.toFixed(2)}`)
         }
-        
 
 
 
