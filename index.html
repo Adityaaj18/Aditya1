@@ -312,7 +312,7 @@
                 basket1.addItem(product, quantity);
             }
 
-        function showTotal1() {  
+        function showTotalValue() {  
             const prices = getPrices();
             const total = basket.getCost(prices);          
             alert(`Total Price: $${total.toFixed(2)}`);
@@ -420,11 +420,12 @@
         <h2>Shopping Cart</h2>
         <button onclick="showTotal()">Show Total Price</button>
     </div>
+</br>
     <div>
         <h1>Exercise 9</h1>
         <h2>Shopping Cart</h2>
         
-        <div class="product-selection">
+        <div>
             <select id="productSelect">
                 <option value="apple" data-price="0.50">Apple ($0.50)</option>
                 <option value="banana" data-price="0.30">Banana ($0.30)</option>
@@ -438,8 +439,7 @@
             <!-- Cart items will be displayed here -->
         </div>
         
-
-        <button onclick="showTotal1()">Calculate Total</button>
+        <button onclick="showTotalValue()">Calculate Total</button>
         
     </div>
 
