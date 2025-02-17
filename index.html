@@ -312,7 +312,9 @@
                 basket1.addItem(product, quantity);
             }
 
-        function showTotal1() {            
+        function showTotal1() {  
+            const prices = getPrices();
+            const total = basket.getCost(prices);          
             alert(`Total Price: $${total.toFixed(2)}`);
         }
     }
