@@ -243,11 +243,79 @@
 
         
         function showTotal() {
-            const total = basket.getCost(prices);
-            
+            const total = basket.getCost(prices); 
             alert(`Total Price: $${total.toFixed(2)}`)
         }
 
+
+
+        //Exercise 9
+        class Basket {
+            constructor() {
+                this.items = [];
+            }
+
+            addItem(product, qty) {
+                const existingItem = this.items.find(item => item.product === product);
+                
+                if (existingItem) {
+                    existingItem.qty += qty;
+                } else {
+                    this.items.push({ product, qty });
+                }
+                this.displayItems();
+            }
+
+            getCost(prices) {
+                let totalCost = 0;
+                for (const item of this.items) {
+                    if (prices[item.product] === undefined) {
+                        throw new Error(`No price found for product: ${item.product}`);
+                    }
+                    totalCost += prices[item.product] * item.qty;
+                }
+                return totalCost;
+            }
+
+            displayItems() {
+                const cartItemsDiv = document.getElementById('cartItems');
+                cartItemsDiv.innerHTML = '';
+                
+                this.items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    itemDiv.textContent = `${item.product}: ${item.qty} units`;
+                    cartItemsDiv.appendChild(itemDiv);
+                });
+            }
+        }
+
+        const basket1 = new Basket();
+
+        function getPrices() {
+            const prices = {};
+            const options = document.getElementById('productSelect').options;
+            for (let option of options) {
+                prices[option.value] = parseFloat(option.dataset.price);
+            }
+            return prices;
+        }
+
+        function addToBasket1() {
+            const productSelect = document.getElementById('productSelect');
+            const quantityInput = document.getElementById('quantityInput');
+            
+            const product = productSelect.value;
+            const quantity = parseInt(quantityInput.value);
+            
+            if (quantity > 0) {
+                basket1.addItem(product, quantity);
+            }
+
+        function showTotal1() {            
+            alert(`Total Price: $${total.toFixed(2)}`);
+        }
+    }
 
 
     </script>
@@ -346,9 +414,28 @@
         </div>
     </div>
     <div>
+        <h1>Exercise 8</h1>
         <h2>Shopping Cart</h2>
         <button onclick="showTotal()">Show Total Price</button>
-        <div id="totalDisplay" class="total"></div>
+    </div>
+    <div>
+        <h1>Exercise 9</h1>
+        <h2>Shopping Cart</h2>
+        
+        <div class="product-selection">
+            <select id="productSelect">
+                <option value="apple" data-price="0.50">Apple ($0.50)</option>
+                <option value="banana" data-price="0.30">Banana ($0.30)</option>
+                <option value="orange" data-price="0.60">Orange ($0.60)</option>
+            </select>
+            <input type="number" id="quantityInput" value="1" min="1" max="99">
+            <button onclick="addToBasket()">Add to Cart</button>
+        </div>
+
+        
+
+        <button onclick="showTotal()">Calculate Total</button>
+        
     </div>
 
     </div>
