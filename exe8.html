@@ -1,10 +1,62 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <script>
+      class Basket {
+        constructor() {
+          this.items = [];
+        }
+
+        addItem(product, qty) {
+          const existingItem = this.items.find(
+            (item) => item.product === product
+          );
+
+          if (existingItem) {
+            existingItem.qty += qty;
+          } else {
+            this.items.push({ product, qty });
+          }
+        }
+
+        getCost(prices) {
+          let totalCost = 0;
+
+          for (const item of this.items) {
+            if (prices[item.product] === undefined) {
+              throw new Error(`No price found for product: ${item.product}`);
+            }
+            totalCost += prices[item.product] * item.qty;
+          }
+
+          return totalCost;
+        }
+      }
+
+      const basket = new Basket();
+      basket.addItem("apple", 3);
+      basket.addItem("banana", 2);
+      basket.addItem("orange", 1);
+
+      const prices = {
+        apple: 0.5,
+        banana: 0.3,
+        orange: 0.6,
+      };
+
+      function showTotal() {
+        const total = basket.getCost(prices);
+        alert(`Total Price: $${total.toFixed(2)}`);
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Exercise 8</h1>
+      <h2>Shopping Cart</h2>
+      <button onclick="showTotal()">Show Total Price</button>
+    </div>
+  </body>
 </html>
