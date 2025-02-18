@@ -21,48 +21,7 @@
 
         //exercise 5
 
-        const parseArrayInput = (input) => {
-            return input.split(',')
-                .map(num => parseInt(num.trim()))
-                .filter(num => !isNaN(num));
-        }
-
-
-        const f5 = (a, l) => {
-
-            if (!Array.isArray(a) || !Array.isArray(l) || a.length !== 2) {
-                return 0;
-            }
-
-
-            let sum = 0;
-            for (const num of l) {
-
-                if (num % a[0] === 0 || num % a[1] === 0) {
-                    sum += num;
-                }
-            }
-
-            return sum;
-        }
-
-        const calculateSum2 = () => {
-            const factorsInput = document.getElementById('factorsInput').value;
-            const numbersInput = document.getElementById('numbersInput').value;
-
-            const factorsArray = parseArrayInput(factorsInput);
-            const numbersArray = parseArrayInput(numbersInput);
-
-
-            if (factorsArray.length !== 2) {
-                alert('Please enter exactly 2 factors separated by comma');
-                return;
-            }
-
-
-            const result = f5(factorsArray, numbersArray);
-            alert(`The sum of multiples is: ${result}`);
-        }
+       
 
         //exercise 6
 
