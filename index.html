@@ -17,7 +17,41 @@
         
 
         //exercise 4
-       
+        const findSumOfMultiples = (a, b, arr) => {
+
+            a = parseInt(a);
+            b = parseInt(b);
+
+
+            const multiples = arr.filter(num => num % a === 0 || num % b === 0);
+
+            const sum = multiples.reduce((acc, curr) => acc + curr, 0);
+
+            return sum;
+        }
+
+        const calculateSum = () => {
+
+            const a = document.getElementById('numA').value;
+            const b = document.getElementById('numB').value;
+            const cString = document.getElementById('arrayC').value;
+
+
+            const c = cString.split(',').map(num => parseInt(num.trim()));
+
+
+            if (!a || !b || !cString) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+
+            const result = findSumOfMultiples(a, b, c);
+
+            alert(`Sum of multiples of ${a} or ${b} in the array is: ${result}`)
+
+
+        }
 
         //exercise 5
 
@@ -251,13 +285,34 @@
 
     </br>
     </br>
-    
-    </br>
-    </br>
-    
-    <br>
-    <button onclick="calculateSum()">Calculate Sum</button>
+    <h1>Exercise 3</h1>
 
+    <div>
+        <div><label>A</label><input id="a" type="number" /></div>
+        <div><label>B</label><input id="b" type="number" /></div>
+        <div><label>N</label><input id="n" type="number" /></div>
+        <button onclick="clickMeMultiple()">Click me</button>
+    </div>
+    </br>
+    </br>
+    <h1>Exercise 4</h1>
+    <div>
+        <div class="input-group">
+            <label for="numA">Enter value for a:</label>
+            <input type="number" id="numA" placeholder="Enter first number">
+        </div>
+
+        <div class="input-group">
+            <label for="numB">Enter value for b:</label>
+            <input type="number" id="numB" placeholder="Enter second number">
+        </div>
+
+        <div class="input-group">
+            <label for="arrayC">Enter array c (comma separated):</label>
+            <input type="text" id="arrayC" placeholder="e.g., 1,2,3,4,5">
+        </div>
+    </div>
+    
     <div id="result"></div>
     </div>
     <div>
