@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let clickMeMultiple = () => {
+        const a = Number(document.getElementById("a").value);
+        const b = Number(document.getElementById("b").value);
+        const n = Number(document.getElementById("n").value);
+
+        let sumA = 0;
+        let sumB = 0;
+
+        for (let i = a; i <= n; i += a) {
+          sumA += i;
+        }
+        for (let i = b; i <= n; i += b) {
+          sumB += i;
+        }
+
+        alert("Sum of A: " + sumA + "  " + "Sum of B: " + sumB);
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Exercise 3</h1>
+
+    <div>
+      <div><label>A</label><input id="a" type="number" /></div>
+      <div><label>B</label><input id="b" type="number" /></div>
+      <div><label>N</label><input id="n" type="number" /></div>
+      <button onclick="clickMeMultiple()">Click me</button>
+    </div>
+  </body>
+</html>
