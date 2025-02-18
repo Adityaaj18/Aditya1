@@ -1,10 +1,32 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <script>
+      const f7 = () => {
+        const basket = {
+          apple: 10,
+          mango: 5,
+        };
+        const prices = {
+          apple: 2,
+          mango: 3,
+        };
+        let total = calculateBasketTotal(prices, basket);
+        alert(`The total price of the cart is: ${total}`);
+      };
+
+      const calculateBasketTotal = (price, quantity) => {
+        let totalPrice = price.apple * quantity.apple;
+        return totalPrice;
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Exercise 7</h1>
+    <div>
+      <button onclick="f7()">Add to cart</button>
+    </div>
+  </body>
 </html>
