@@ -1,10 +1,60 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <script>
+      const f6 = (a, l) => {
+        const factors = a.split(",").map((num) => parseInt(num.trim()));
+        const numbers = l.split(",").map((num) => parseInt(num.trim()));
+
+        const multiples = numbers.filter((num) =>
+          factors.some((factor) => factor !== 0 && num % factor === 0)
+        );
+
+        return multiples.reduce((sum, num) => sum + num, 0);
+      };
+
+      const calculateSum3 = () => {
+        const arrayA = document.getElementById("array-a").value;
+        const arrayL = document.getElementById("array-l").value;
+
+        if (!arrayA.trim() || !arrayL.trim()) {
+          alert("Please enter both arrays");
+          return;
+        }
+
+        const result = f6(arrayA, arrayL);
+        alert(`The sum of multiples is: ${result}`);
+      };
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Exercise 6</h1>
+      <div>
+        <div class="input-group">
+          <label for="array-a">Array a (factors, comma-separated):</label>
+          <input
+            type="text"
+            id="array-a"
+            placeholder="Enter factors (e.g., 2,3,5)"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="array-l"
+            >Array l (numbers to check, comma-separated):</label
+          >
+          <input
+            type="text"
+            id="array-l"
+            placeholder="Enter numbers (e.g., 6,8,9,10,12)"
+          />
+        </div>
+
+        <button onclick="calculateSum3()">Calculate Sum of Multiples</button>
+      </div>
+    </div>
+  </body>
 </html>
