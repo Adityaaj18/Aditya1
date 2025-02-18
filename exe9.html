@@ -1,10 +1,101 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <script>
+      class Basket1 {
+        constructor() {
+          this.items = [];
+        }
+
+        addItem(product, qty) {
+          const existingItem = this.items.find(
+            (item) => item.product === product
+          );
+
+          if (existingItem) {
+            existingItem.qty += qty;
+          } else {
+            this.items.push({ product, qty });
+          }
+          this.displayItems();
+        }
+
+        getCost(prices) {
+          let totalCost = 0;
+          for (const item of this.items) {
+            if (prices[item.product] === undefined) {
+              throw new Error(`No price found for product: ${item.product}`);
+            }
+            totalCost += prices[item.product] * item.qty;
+          }
+          return totalCost;
+        }
+
+        displayItems() {
+          const cartItemsDiv = document.getElementById("cartItems");
+          cartItemsDiv.innerHTML = "";
+
+          this.items.forEach((item) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "cart-item";
+            itemDiv.textContent = `${item.product}: ${item.qty} units`;
+            cartItemsDiv.appendChild(itemDiv);
+          });
+        }
+      }
+
+      const basket1 = new Basket1();
+
+      function getPrices() {
+        const prices = {};
+        const options = document.getElementById("productSelect").options;
+        for (let option of options) {
+          prices[option.value] = parseFloat(option.dataset.price);
+        }
+        return prices;
+      }
+
+      function addToBasket1() {
+        const productSelect = document.getElementById("productSelect");
+        const quantityInput = document.getElementById("quantityInput");
+
+        const product = productSelect.value;
+        const quantity = parseInt(quantityInput.value);
+
+        if (quantity > 0) {
+          basket1.addItem(product, quantity);
+        }
+      }
+
+      function showTotalValue() {
+        const prices = getPrices();
+        const total = basket1.getCost(prices);
+        alert(`Total Price: $${total.toFixed(2)}`);
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Exercise 9</h1>
+      <h2>Shopping Cart</h2>
+
+      <div>
+        <select id="productSelect">
+          <option value="apple" data-price="0.50">Apple ($0.50)</option>
+          <option value="banana" data-price="0.30">Banana ($0.30)</option>
+          <option value="orange" data-price="0.60">Orange ($0.60)</option>
+        </select>
+        <input type="number" id="quantityInput" value="1" min="1" max="99" />
+        <button onclick="addToBasket1()">Add to Cart</button>
+      </div>
+
+      <div id="cartItems" class="cart-items">
+        <!-- Cart items will be displayed here -->
+      </div>
+
+      <button onclick="showTotalValue()">Calculate Total</button>
+    </div>
+  </body>
 </html>
